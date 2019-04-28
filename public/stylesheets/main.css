@@ -10,3 +10,9 @@ body, .jumbotron {
 .delete-form {
     display: inline;
 }
+
+.github-button, .linkedin-button, .email-button {
+    background-color: #ffffff;
+    color: black;
+    border-radius: 50%;
+}
