@@ -1,20 +1,21 @@
 // Dependencies
-const express         = require('express'),
-      bodyParser      = require('body-parser'),
-      dotenv          = require('dotenv');
-      LocalStrategy   = require('passport-local'),
-      methodOverride  = require('method-override'),
-      mongoose        = require('mongoose'),
-      passport        = require('passport'),
-      seedDB          = require('./seeds');
+const express           = require('express'),
+      bodyParser        = require('body-parser'),
+      dotenv            = require('dotenv'),
+      expressSanitizer  = require('express-sanitizer'),
+      LocalStrategy     = require('passport-local'),
+      methodOverride    = require('method-override'),
+      mongoose          = require('mongoose'),
+      passport          = require('passport'),
+      seedDB            = require('./seeds');
 // Models
-const Comment         = require('./models/comment'), 
-      Post            = require('./models/post'),
-      User            = require('./models/user');
+const Comment           = require('./models/comment'), 
+      Post              = require('./models/post'),
+      User              = require('./models/user');
 // Routes
-const commentRoutes   = require('./routes/comments');
-      indexRoutes     = require('./routes/index'),
-      postRoutes      = require('./routes/posts');
+const commentRoutes     = require('./routes/comments');
+      indexRoutes       = require('./routes/index'),
+      postRoutes        = require('./routes/posts');
 
 // App Configuration
 dotenv.config();
@@ -23,6 +24,7 @@ mongoose.set('useFindAndModify', false);
 app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+app.use(expressSanitizer());
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 seedDB(); // initial seed, comment after first run

@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 
 // Posts - Create
 router.post('/', middleware.checkAdmin, (req, res) => {
+  req.body.post.content = req.sanitize(req.body.post.content);
   Post.create(req.body.post, (error, newlyCreatedPost) => {
     if (error) {
       console.log(error);
@@ -56,6 +57,7 @@ router.get('/:id/edit', middleware.checkAdmin, (req, res) => {
 
 // Posts - Update
 router.put('/:id', middleware.checkAdmin, (req, res) => {
+  req.body.post.content = req.sanitize(req.body.post.content);
   Post.findByIdAndUpdate(req.params.id, req.body.post, (error, updatedPost) => {
     if (error) {
         console.log(error);

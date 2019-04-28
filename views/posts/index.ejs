@@ -19,7 +19,7 @@
                     <h4><%= post.title %></h4>
                 </div>
                 <div>
-                    <p><%= post.content.substring(0, 100) %>...</p>
+                    <p><%- post.content.substring(0, 100) %>...</p>
                 </div>
                 <div class="text-muted">
                     <p>Created: <%= post.created.toDateString() %></p>

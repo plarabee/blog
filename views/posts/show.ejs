@@ -4,7 +4,7 @@
     <h1><%= post.title %></h1>
 </div>
 <div class="container bg-white text-dark p-5">
-    <p><%= post.content %></p>
+    <p><%- post.content %></p>
     <div>
         <a class="btn btn-info" href="/posts">Back</a>
         <% if (currentUser && currentUser.isAdmin) { %>
