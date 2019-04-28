@@ -28,4 +28,12 @@ middlewareObject.checkCommentOwnership = function(req, res, next) {
   }
 }
 
+middlewareObject.checkAdmin = function(req, res, next) {
+  if (req.user && req.user.isAdmin) {
+    next();
+  } else {
+    res.redirect('back');
+  }
+}    
+
 module.exports = middlewareObject;

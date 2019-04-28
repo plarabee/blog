@@ -1,7 +1,8 @@
-var mongoose = require("mongoose");
-var Post = require("./models/post");
-var Comment   = require("./models/comment");
-var User = require('./models/user');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const Post = require('./models/post');
+const Comment   = require('./models/comment');
+const User = require('./models/user');
  
 function seedDB(){
    Post.remove({}, function(err){
@@ -21,8 +22,8 @@ function seedDB(){
         if (error) {
           console.log(error);
         }
-        let adminUser = new User({username: 'admin', isAdmin: true});
-        User.register(adminUser, 'admin', (error, user) => {
+        let adminUser = new User({username: process.env.ADMIN_USER, isAdmin: true});
+        User.register(adminUser, process.env.ADMIN_PASSWORD, (error, user) => {
               if (error) {
                 console.log(error);
               } else {

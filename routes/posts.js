@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
 // Posts - Create
-router.post('/', (req, res) => {
+router.post('/', middleware.checkAdmin, (req, res) => {
   Post.create(req.body.post, (error, newlyCreatedPost) => {
     if (error) {
       console.log(error);
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
 });
 
 // Posts - New
-router.get('/new', (req, res) => {
+router.get('/new', middleware.checkAdmin, (req, res) => {
   res.render('posts/new');
 });
 
@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Posts - Edit
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', middleware.checkAdmin, (req, res) => {
   Post.findById(req.params.id, (error, foundPost) => {
     if (error) {
         console.log(error);
@@ -56,7 +56,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // Posts - Update
-router.put('/:id', (req, res) => {
+router.put('/:id', middleware.checkAdmin, (req, res) => {
   Post.findByIdAndUpdate(req.params.id, req.body.post, (error, updatedPost) => {
     if (error) {
         console.log(error);
@@ -68,7 +68,7 @@ router.put('/:id', (req, res) => {
 });
 
 // Posts - Destroy
-router.delete('/:id', (req, res) => {
+router.delete('/:id', middleware.checkAdmin, (req, res) => {
   Post.findByIdAndRemove(req.params.id, (error, removedPost) => {
       if (error) {
         console.log(error);

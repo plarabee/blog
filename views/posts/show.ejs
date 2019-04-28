@@ -16,7 +16,7 @@
         <p class="float-right text-muted">Created: <%= post.created.toDateString() %></p>
     </div>
     <div>
-        <a class="btn btn-primary float-right" href="/posts/<%= post._id %>/comments/new">Add Comment</a>
+        <a class="btn btn-primary float-right mt-2" href="/posts/<%= post._id %>/comments/new">Add Comment</a>
         <hr>
         <% post.comments.forEach((comment) => { %>
             <div class="row">
