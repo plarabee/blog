@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<header class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-4">Patrick's Blog</h1>
+        <hr>
+        <p class="lead">System administration, web development, and related technologies</p>
+        <% if (currentUser && currentUser.isAdmin) { %>
+        <a class="btn btn-primary" href="/posts/new">Create Post</a>
+        <% } %>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <% posts.forEach((post) => { %>
+            <div class="container-fluid bg-white text-dark mb-3 p-5">
+                <div>
+                    <h4><%= post.title %></h4>
+                </div>
+                <div>
+                    <p><%= post.content.substring(0, 100) %>...</p>
+                </div>
+                <div class="text-muted">
+                    <p>Created: <%= post.created.toDateString() %></p>
+                </div>
+                    <a class="btn btn-primary float-right" href="/posts/<%= post._id %>">Read More</a>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

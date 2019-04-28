@@ -1,0 +1,12 @@
+body, .jumbotron {
+    background-color: #000f28;
+    color: #ffffff;
+}
+
+.navbar-custom {
+    background-color: transparent;
+}
+
+.delete-form {
+    display: inline;
+}
