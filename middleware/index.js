@@ -1,6 +1,6 @@
-const Post = require('../models/post');
-const Comment = require('../models/comment');
-
+const Comment   = require('../models/comment'),
+      Post      = require('../models/post');
+      
 const middlewareObject = {};
 
 middlewareObject.isLoggedIn = function(req, res, next) {

@@ -1,8 +1,7 @@
-const express = require('express'),
-      middleware = require('../middleware'),
-      Post = require('../models/post');
-
-const router = express.Router();
+const express     = require('express'),
+      middleware  = require('../middleware'),
+      Post        = require('../models/post');
+const router      = express.Router();
 
 // Posts - Index
 router.get('/', (req, res) => {

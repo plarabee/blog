@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const passport = require('passport');
-const User = require('../models/user');
+const express   = require('express'),
+      passport  = require('passport'),
+      User      = require('../models/user');
+const router    = express.Router();
 
 // Root Route
 router.get('/', (req, res) => {

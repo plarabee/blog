@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "simple-blog",
   "version": "1.0.0",
-  "description": "My personal blog",
+  "description": "A simple blog application created with node.js, express, and MongoDB.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

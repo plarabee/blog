@@ -1,20 +1,20 @@
 // Dependencies
-const express = require('express'),
-      bodyParser = require('body-parser'),
-      dotenv = require('dotenv');
-      LocalStrategy = require('passport-local'),
-      methodOverride = require('method-override'),
-      mongoose = require('mongoose'),
-      passport = require('passport'),
-      seedDB = require('./seeds');
+const express         = require('express'),
+      bodyParser      = require('body-parser'),
+      dotenv          = require('dotenv');
+      LocalStrategy   = require('passport-local'),
+      methodOverride  = require('method-override'),
+      mongoose        = require('mongoose'),
+      passport        = require('passport'),
+      seedDB          = require('./seeds');
 // Models
-const Comment = require('./models/comment'), 
-      Post = require('./models/post'),
-      User = require('./models/user');
+const Comment         = require('./models/comment'), 
+      Post            = require('./models/post'),
+      User            = require('./models/user');
 // Routes
-const commentRoutes = require('./routes/comments');
-      indexRoutes = require('./routes/index'),
-      postRoutes = require('./routes/posts');
+const commentRoutes   = require('./routes/comments');
+      indexRoutes     = require('./routes/index'),
+      postRoutes      = require('./routes/posts');
 
 // App Configuration
 dotenv.config();
@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
-seedDB();
+seedDB(); // initial seed, comment after first run
 
 // Passport Configuration
 app.use(require('express-session')({
@@ -52,5 +52,5 @@ app.use('/posts', postRoutes);
 
 // Server Configuration
 app.listen(process.env.SERVER_PORT, process.env.SERVER_HOST, () => {
-  console.log('Blog has started and is listening on ' + process.env.SERVER_HOST + ':' + process.env.SERVER_PORT);
+  console.log('Server has started and is listening on ' + process.env.SERVER_HOST + ':' + process.env.SERVER_PORT);
 });
