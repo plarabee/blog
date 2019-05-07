@@ -16,10 +16,14 @@
         <p class="float-right text-muted">Created: <%= post.created.toDateString() %></p>
     </div>
     <div>
-        <a class="btn btn-primary float-right mt-2" href="/posts/<%= post._id %>/comments/new">Add Comment</a>
         <hr>
+        <div class="row">
+            <div class="col-md-12">
+                    <a class="btn btn-primary float-right" href="/posts/<%= post._id %>/comments/new">Add Comment</a>
+            </div>
+        </div>
         <% post.comments.forEach((comment) => { %>
-            <div class="row">
+            <div class="row mb-3 mt-3">
                 <div class="col-md-12">
                     <strong><%= comment.author.username %></strong>
                     <p><%= comment.text %></p>
