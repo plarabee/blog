@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="row">
-        <% posts.forEach((post) => { %>
+        <!-- <% posts.forEach((post) => { %>
             <div class="container-fluid bg-white text-dark mb-3 p-5">
                 <div>
                     <h4><%= post.title %></h4>
@@ -26,7 +26,22 @@
                 </div>
                     <a class="btn btn-primary float-right" href="/posts/<%= post._id %>">Read More</a>
             </div>
-        <% }); %>
+        <% }); %> -->
+
+        <% for (let i = posts.length - 1; i >= 0; i--) { %>
+            <div class="container-fluid bg-white text-dark mb-3 p-5">
+                <div>
+                    <h4><%= posts[i].title %></h4>
+                </div>
+                <div>
+                    <p><%- posts[i].content.substring(0, 100) %>...</p>
+                </div>
+                <div class="text-muted">
+                    <p>Created: <%= posts[i].created.toDateString() %></p>
+                </div>
+                    <a class="btn btn-primary float-right" href="/posts/<%= posts[i]._id %>">Read More</a>
+            </div>
+        <% } %>
     </div>
 </div>
 
